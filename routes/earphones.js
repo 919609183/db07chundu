@@ -16,6 +16,7 @@ router.get('/', function (req, res, next) {
 res.render('earphones', { title: 'Search Results Ear Phones' });
 });
 
-
+// GET request for one costume.
+router.get('/earphones/:id', earphones_controlers.earphones_detail);
 
 module.exports = router;
