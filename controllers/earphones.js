@@ -76,3 +76,24 @@ exports.earphones_detail = async function(req, res) {
     res.send(`{"error": document for id ${req.params.id} not found`);
     }
     };
+
+// Handle earphones update form on PUT.
+    exports.earphones_update_put = async function(req, res) {
+    console.log(`update on id ${req.params.id} with body
+    ${JSON.stringify(req.body)}`)
+    try {
+    let toUpdate = await Earphones.findById( req.params.id)
+    // Do updates of properties
+    if(req.body.brand)
+    toUpdate.brand = req.body.brand;
+    if(req.body.model) toUpdate.model = req.body.model;
+    if(req.body.price) toUpdate.price = req.body.price;
+    let result = await toUpdate.save();
+    console.log("Sucess " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": ${err}: Update for id ${req.params.id}
+    failed`);
+    }
+    };
