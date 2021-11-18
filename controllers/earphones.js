@@ -27,8 +27,16 @@ res.send(`{"error": ${err}}`);
 }
 };
 // Handle earphones delete form on DELETE.
-exports.earphones_delete = function (req, res) {
-res.send('NOT IMPLEMENTED: earphones delete DELETE ' + req.params.id);
+exports.earphones_delete = async function (req, res) {
+    console.log("delete " + req.params.id)
+try {
+result = await Earphones.findByIdAndDelete( req.params.id)
+console.log("Removed " + result)
+res.send(result)
+} catch (err) {
+res.status(500)
+res.send(`{"error": Error deleting ${err}}`);
+}
 };
 // Handle ear phones update form on PUT.
 exports.earphones_update_put = function (req, res) {
