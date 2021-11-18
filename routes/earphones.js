@@ -22,4 +22,7 @@ router.get('/earphones/:id', earphones_controlers.earphones_detail);
 /* GET detail costume page */
 router.get('/detail', earphones_controlers.earphones_view_one_Page);
 
+/* GET create costume page */
+router.get('/create', earphones_controlers.earphones_create_Page);
+
 module.exports = router;
