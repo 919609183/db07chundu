@@ -110,7 +110,7 @@ exports.earphones_detail = async function(req, res) {
 exports.earphones_view_one_Page = async function(req, res) {
     console.log("single view for id " + req.query.id)
     try{
-    result = await earphones.findById( req.query.id)
+    result = await Earphones.findById( req.query.id)
     res.render('Earphonesdetail',
     { title: 'Earphones Detail', toShow: result });
     }
