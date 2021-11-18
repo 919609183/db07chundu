@@ -104,4 +104,18 @@ exports.earphones_detail = async function(req, res) {
     res.send(`{"error": ${err}: Update for id ${req.params.id}
     failed`);
     }
+};
+
+// Handle a show one view with id specified by query
+exports.earphones_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+    result = await earphones.findById( req.query.id)
+    res.render('Earphonesdetail',
+    { title: 'Earphones Detail', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
     };
