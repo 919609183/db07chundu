@@ -1,27 +1,19 @@
 extends layout
 
 block content
-  div(class="container-fluid")
-    h1= title
-  - let results=[{brand:"oneplus",model:"zplus",price:99.99},{brand:"samsung",model:"galaxy",price:149.99},{brand:"sony",model:"MDREX",price:.119}] 
-    div(class="row")
-      each form,index in results
-        div(class = "col-sm-2 bg-primary" onclick=`buy(${index})`) #{form.brand}
-        br
-        br
-        br
-        div(class = "col-sm-2 bg-primary" onclick=`buy(${index})`) #{form.model}
-        br
-        br
-        br
-        div(class = "col-sm-2 bg-primary" onclick=`buy(${index})`) #{form.price}
-    script.
-     
-      function buy(itemNo)
-      {
-        alert(`You purchased Item ${itemNo+1}`)
-      }
- 
-
-
-  
+  h1= title
+  - let earphones = results; 
+  table(class="table table-stripped table-bordered")
+        thead(style="background-color:black;color:red") 
+            tr
+                td Earphone ID
+                td Earphone Brand 
+                td Earphone Model 
+                td Earphone Price 
+        tbody 
+            each earphone in earphones 
+                tr
+                    td #{earphone._id}
+                    td #{earphone.brand}
+                    td #{earphone.model}
+                    td #{earphone.price}

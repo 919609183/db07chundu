@@ -152,7 +152,7 @@ exports.earphones_update_Page = async function(req, res) {
 exports.earphones_delete_Page = async function(req, res) {
     console.log("Delete view for id " + req.query.id)
     try{
-    result = await Costume.findById(req.query.id)
+    result = await Earphones.findById(req.query.id)
     res.render('earphonesdelete', { title: 'Earphones Delete', toShow:
     result });
     }
