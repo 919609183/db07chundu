@@ -27,4 +27,7 @@ router.get('/create', earphones_controlers.earphones_create_Page);
 
 /* GET create update page */
 router.get('/update', earphones_controlers.earphones_update_Page);
+
+/* GET create costume page */
+router.get('/delete', earphones_controlers.earphones_delete_Page);
 module.exports = router;

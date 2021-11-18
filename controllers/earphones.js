@@ -147,3 +147,17 @@ exports.earphones_update_Page = async function(req, res) {
     res.send(`{'error': '${err}'}`);
     }
 };
+
+// Handle a delete one view with id from query
+exports.earphones_delete_Page = async function(req, res) {
+    console.log("Delete view for id " + req.query.id)
+    try{
+    result = await Costume.findById(req.query.id)
+    res.render('earphonesdelete', { title: 'Earphones Delete', toShow:
+    result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
