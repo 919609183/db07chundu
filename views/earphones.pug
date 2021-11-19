@@ -2,18 +2,26 @@ extends layout
 
 block content
   h1= title
-  - let earphones = results; 
+  - let earphoness = results; 
   table(class="table table-stripped table-bordered")
-        thead(style="background-color:black;color:red") 
+        thead(style="background-color:yellow; color:red;font-size:20px;font-family:calibri;") 
             tr
-                td Earphone ID
-                td Earphone Brand 
-                td Earphone Model 
-                td Earphone Price 
+                td Earphones ID
+                td Earphones brand 
+                td Earphones model 
+                td Earphones price 
+                td Update
         tbody 
-            each earphone in earphones 
+            each earphones in earphoness
+                - let destination = `dispatch(\"/earphones/update?id=${earphones._id}\")`
                 tr
-                    td #{earphone._id}
-                    td #{earphone.brand}
-                    td #{earphone.model}
-                    td #{earphone.price}
+                    td #{earphones._id}
+                    td #{earphones.brand}
+                    td #{earphones.model}
+                    td #{earphones.price}
+                    td
+                      button.btn( class="btn-primary ml-1", onclick= destination) Update
+                script.
+                    function dispatch(path){
+                      window.location.href=path
+                    }
