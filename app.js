@@ -108,14 +108,6 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/earphones', earphonesRouter);
-app.use('/addmods', addmodsRouter);
-app.use('/selector', selectorRouter);
-app.use('/', resourceRouter);
 
 var passport = require('passport'); 
 var LocalStrategy = require('passport-local').Strategy;
@@ -149,6 +141,17 @@ var Account =require('./models/account');
 passport.use(new LocalStrategy(Account.authenticate())); 
 passport.serializeUser(Account.serializeUser()); 
 passport.deserializeUser(Account.deserializeUser());
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/earphones', earphonesRouter);
+app.use('/addmods', addmodsRouter);
+app.use('/selector', selectorRouter);
+app.use('/', resourceRouter);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
