@@ -1,7 +1,8 @@
 const mongoose = require("mongoose")
 const earphonesSchema = mongoose.Schema({
     brand: String,
-    model: String,
-    price: Number
+    model: {type:String,lenght:9},
+    price: {type:Number,min:30,max:200}
 })
-module.exports = mongoose.model("Earphones", earphonesSchema)
+module.exports = mongoose.model("Earphones",
+    earphonesSchema)
